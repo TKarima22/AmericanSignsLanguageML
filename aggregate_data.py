@@ -44,3 +44,9 @@ if (row_count_agg == row_count):
     print("Data aggregation complete. Aggregated data saved to 'aggregated_data.csv'.")
 else:
     print("Data aggregation went wrong.")
+'''
+data here is considered as Structured data:
+    * we have clearly identified rows and columns 
+    * Data is identified with labels 
+    * Different type of data is supported
+'''

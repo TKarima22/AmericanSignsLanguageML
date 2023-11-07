@@ -6,10 +6,16 @@ import pandas as pd
 data = pd.read_csv('MS-ASL/aggregated_data/aggregated_data.csv')
 pd.set_option('display.max_columns', None)
 
+
+print('\n############### Data  shape ##################')
+# let's see the head of the file
+print(data.shape)
+'''(25522, 17)'''
+
 print('\n############### Data first rows ##################')
 # let's see the head of the file
 print(data.head())
-#column review is empty
+'''column review is empty'''
 
 print('\n############### Data last rows ##################')
 # let's see the tail of the file
@@ -37,3 +43,31 @@ print(data.info())
  15  width       25513 non-null  float64
  16  review      7151 non-null   float64'''
 
+print('\n############### Check missing info ##################')
+# let's check missing info
+print(data.isnull().sum())
+'''
+org_text         16
+clean_text        9
+start_time        9
+signer_id         9
+signer            9
+start             9
+end               9
+file              9
+label             9
+height            9
+fps               9
+end_time          9
+url               9
+text              9
+box               0
+width             9
+review        18371
+dtype: int64
+'''
+
+print('\n############### Check non null value of column review ##################')
+# let's check missing info
+non_empty_values = data['review'].dropna()
+print(non_empty_values)
