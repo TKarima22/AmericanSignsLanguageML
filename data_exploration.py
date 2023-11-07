@@ -71,3 +71,45 @@ print('\n############### Check non null value of column review #################
 # let's check missing info
 non_empty_values = data['review'].dropna()
 print(non_empty_values)
+
+print('\n############### delete column review from dataset##################')
+# let's check missing info
+print(data.columns)
+del data['review']
+print(data.columns)
+data.to_csv('MS-ASL/aggregated_data/dataset.csv', index=False)
+
+print('\n############### Check missing info ##################')
+# let's check missing info
+print(data.isnull().sum())
+
+print('\n############### Number of rows with all null values ##################')
+count_null_rows = data.isna().all(axis=1).sum()
+print(count_null_rows)
+
+print('\n############### Number of rows with 15 null values ##################')
+# Count rows with two null values
+count_rows_with_15_nulls = (data.isna().sum(axis=1) == 15).sum()
+print(count_rows_with_15_nulls)
+
+print('\n############### Number of rows with 1 null values ##################')
+# Count rows with two null values
+count_rows_with_1_null = (data.isna().sum(axis=1) == 1).sum()
+print(count_rows_with_1_null)
+
+
+print('\n############### Rows with 15 null values ##################')
+rows_with_15_nulls = data[data.isna().sum(axis=1) == 15]
+print(rows_with_15_nulls)
+
+print('\n############### Delete rows with 15 null values ##################')
+data = data[~(data.isna().sum(axis=1) == 15)]
+print('\n############### Rows with 15 null values ##################')
+count_rows_with_15_nulls = (data.isna().sum(axis=1) == 15).sum()
+print(count_rows_with_15_nulls)
+
+print('\n############### Rows with 1 null value ##################')
+rows_with_1_null = data[data.isna().sum(axis=1) == 1]
+print(rows_with_1_null)
+
+
